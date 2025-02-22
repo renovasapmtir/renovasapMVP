@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /auth/
+
+# Host
+Host: https://renovasap.fr
+
+# Sitemaps
+Sitemap: https://renovasap.fr/sitemap.xml

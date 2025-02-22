@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rénov'ASAP - Application de Réservation de Services
 
-## Getting Started
+Application web permettant aux utilisateurs de réserver rapidement des services de petites interventions dans les domaines de la plomberie, électricité, bricolage et ménage express.
 
-First, run the development server:
+## Technologies Utilisées
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Next.js (React)
+- TypeScript
+- Material-UI
+- Google Authentication
+- Google Spreadsheet (Backend)
+- Stripe (Paiements)
+
+## Fonctionnalités
+
+- Authentification via Google
+- Réservation de services avec choix du créneau
+- Profil utilisateur
+- Historique des interventions
+- Système d'abonnement (en développement)
+- Paiement sécurisé via Stripe
+
+## Configuration Requise
+
+1. Node.js (version recommandée : >=18.x)
+2. npm ou yarn
+3. Compte Google Cloud Platform avec:
+   - OAuth 2.0 configuré
+   - API Google Sheets activée
+4. Compte Stripe
+
+## Configuration PWA
+
+Pour activer les fonctionnalités PWA, vous devez ajouter les fichiers suivants dans le dossier `/public` :
+
+### Icons requis (à générer avec un outil comme realfavicongenerator.net)
+```
+public/
+├── favicon.ico
+└── icons/
+    ├── icon-192x192.png
+    ├── icon-512x512.png
+    └── icon.svg
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Screenshots pour le manifest PWA
+```
+public/
+└── screenshots/
+    ├── home.jpg       (1170x2532)
+    └── reservation.jpg (1170x2532)
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Note: Les icônes doivent respecter les dimensions spécifiées pour une compatibilité optimale avec tous les appareils.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+1. Cloner le projet :
+```bash
+git clone [url-du-repo]
+cd renovasap-app
+```
 
-To learn more about Next.js, take a look at the following resources:
+2. Installer les dépendances :
+```bash
+npm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Configurer les variables d'environnement :
+```bash
+cp .env.example .env.local
+```
+Remplir les variables dans .env.local avec vos propres valeurs.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Configuration Google :
+   - Créer un projet sur Google Cloud Console
+   - Activer l'API Google Sheets
+   - Configurer l'authentification OAuth 2.0
+   - Créer un Google Spreadsheet et noter son ID
 
-## Deploy on Vercel
+5. Configuration Stripe :
+   - Créer un compte Stripe
+   - Récupérer les clés API (Publishable et Secret)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Lancement du Projet
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pour le développement :
+```bash
+npm run dev
+```
+
+Pour la production :
+```bash
+npm run build
+npm start
+```
+
+## Structure du Projet
+
+```
+renovasap-app/
+├── app/
+│   ├── api/            # Routes API
+│   ├── components/     # Composants React
+│   ├── services/       # Services (Google, Stripe)
+│   ├── styles/         # Styles et thème
+│   └── [pages]/       # Pages de l'application
+├── public/            # Assets statiques
+└── middleware.ts      # Middleware Next.js
+```
+
+## Routes Principales
+
+- `/` - Page d'accueil/réservation
+- `/profile` - Profil utilisateur
+- `/reservation` - Réservation de services
+- `/historique` - Historique des interventions
+- `/abonnements` - Gestion des abonnements
+
+## Déploiement
+
+1. Créer un compte sur Railway.app ou Render
+2. Connecter le repository GitHub
+3. Configurer les variables d'environnement
+4. Déployer l'application
+
+## Prochaines Évolutions
+
+- [ ] Ajout d'un abonnement pour interventions récurrentes
+- [ ] Suivi en temps réel des intervenants
+- [ ] Interface dédiée pour les artisans
+- [ ] Système de notation et avis des clients
+
+## Support
+
+Pour toute question ou assistance :
+- Créer une issue sur GitHub
+- Contacter l'équipe de développement
+
+## Licence
+
+Ce projet est sous licence MIT.
